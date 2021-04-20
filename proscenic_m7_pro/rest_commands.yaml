@@ -1,0 +1,81 @@
+rest_command:
+  proscenic_clean:
+    url: "https://mobile.proscenic.com.de/instructions/cmd21005/{{ serial }}?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'cleanMode=sweepOnly'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_deep_cleaning:
+    url: "https://mobile.proscenic.com.de:443/instructions/cmd21005_2/{{ serial }}?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'cleanMode=depthTotalClean'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_collect_dust:
+    url: "https://mobile.proscenic.com.de:443/instructions/cmd/{{ serial }}?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: '{"dInfo":{"userId":"{{ username }}"},"data":{"cmd":"startDustCenter","value":0},"infoType":21024};'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_pause:
+    url: "https://mobile.proscenic.com.de/instructions/{{ serial }}/21017?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'mode=pause'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_continue:
+    url: "https://mobile.proscenic.com.de/instructions/{{ serial }}/21017?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'pauseOrContinue=continue'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_charge:
+    url: "https://mobile.proscenic.com.de/instructions/{{ serial }}/21012?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'charge=start'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_powermode_standard:
+    url: "https://mobile.proscenic.com.de:443/instructions/{{ serial }}/21022?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'setMode=auto'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_powermode_powerful:
+    url: "https://mobile.proscenic.com.de:443/instructions/{{ serial }}/21022?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'setMode=strong'
+    content_type: 'application/x-www-form-urlencoded'
+
+  proscenic_powermode_quiet:
+    url: "https://mobile.proscenic.com.de:443/instructions/{{ serial }}/21022?username={{ username }}"
+    method: POST
+    headers:
+      host: "mobile.proscenic.com.de:443"
+      token: "{{ token }}"
+    payload: 'setMode=quiet'
+    content_type: 'application/x-www-form-urlencoded'

@@ -1,0 +1,81 @@
+script:
+  proscenic_clean:
+    alias: Proscenic Clean
+    sequence:
+      service: rest_command.proscenic_clean
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_deep_cleaning:
+    alias: Proscenic Deep Cleaning
+    sequence:
+      service: rest_command.proscenic_deep_clean
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_collect_dust:
+    alias: Proscenic Collect Dust
+    sequence:
+      service: rest_command.proscenic_collect_dust
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_pause:
+    alias: Proscenic Pause
+    sequence:
+      service: rest_command.proscenic_pause
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_continue:
+    alias: Proscenic Continue
+    sequence:
+      service: rest_command.proscenic_continue
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_charge:
+    alias: Proscenic Charge
+    sequence:
+      service: rest_command.proscenic_charge
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_powermode_standard:
+    alias: Proscenic Powermode Standard
+    sequence:
+      service: rest_command.proscenic_powermode_standard
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_powermode_powerful:
+    alias: Proscenic Powermode Powerful
+    sequence:
+      service: rest_command.proscenic_powermode_powerful
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
+
+  proscenic_powermode_quiet:
+    alias: Proscenic Powermode Quiet
+    sequence:
+      service: rest_command.proscenic_powermode_quiet
+      data:
+        username: !secret proscenic_username
+        token: !secret proscenic_token
+        serial: !secret proscenic_serial
