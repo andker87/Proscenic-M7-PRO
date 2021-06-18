@@ -11,7 +11,7 @@ script:
   proscenic_deep_cleaning:
     alias: Proscenic Deep Cleaning
     sequence:
-      service: rest_command.proscenic_deep_clean
+      service: rest_command.proscenic_deep_cleaning
       data:
         username: !secret proscenic_username
         token: !secret proscenic_token
