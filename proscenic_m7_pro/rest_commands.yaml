@@ -14,7 +14,7 @@ rest_command:
     headers:
       host: "mobile.proscenic.com.de:443"
       token: "{{ token }}"
-    payload: 'cleanMode=depthTotalClean'
+    payload: 'mode=depthTotalClean'
     content_type: 'application/x-www-form-urlencoded'
 
   proscenic_collect_dust:

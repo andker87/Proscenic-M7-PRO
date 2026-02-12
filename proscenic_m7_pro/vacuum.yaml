@@ -1,36 +1,26 @@
-vacuum:
-  - platform: template
-    vacuums:
-      proscenic_m7_pro:
-        friendly_name: "Proscenic M7 PRO"
-#        value_template:
-#        battery_level_template:
-#        attribute_templates:
-#        availability_template:
-        start:
-          service: script.proscenic_clean
-        pause:
-          service: script.proscenic_pause
-#        stop:
-#          service:
-        return_to_base:
-          service: script.proscenic_charge
-#        clean_spot:
-#          service:
-#        locate:
-#          service:
-        set_fan_speed:
-          service_template: >
-            {% if fan_speed == 'Quiet' %}
-              script.proscenic_powermode_quiet
-            {% elif fan_speed == 'Standard' %}
-              script.proscenic_powermode_standard
-            {% elif fan_speed == 'Powerful' %}
-              script.proscenic_powermode_powerful
-            {% else %}
-              script.proscenic_powermode_standard
-            {% endif %}
-        fan_speeds:
-          - Quiet
-          - Standard
-          - Powerful
+template:
+- vacuum:
+  - unique_id: proscenic_m7_pro
+    name: "Proscenic M7 PRO"
+    default_entity_id: vacuum.proscenic_m7_pro
+    start:
+    - action: script.proscenic_clean
+    pause:
+    - action: script.proscenic_pause
+    return_to_base:
+    - action: script.proscenic_charge
+    set_fan_speed:
+    - action: >
+        {% if fan_speed == 'Quiet' %}
+          script.proscenic_powermode_quiet
+        {% elif fan_speed == 'Standard' %}
+          script.proscenic_powermode_standard
+        {% elif fan_speed == 'Powerful' %}
+          script.proscenic_powermode_powerful
+        {% else %}
+          script.proscenic_powermode_standard
+        {% endif %}
+    fan_speeds:
+    - Quiet
+    - Standard
+    - Powerful

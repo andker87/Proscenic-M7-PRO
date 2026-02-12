@@ -1,60 +1,89 @@
 script:
   proscenic_clean:
     alias: Proscenic Clean
+    icon: mdi:play
     sequence:
-      service: rest_command.proscenic_clean
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_clean
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_deep_cleaning:
     alias: Proscenic Deep Cleaning
     sequence:
-      service: rest_command.proscenic_deep_cleaning
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_deep_cleaning
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_collect_dust:
     alias: Proscenic Collect Dust
     sequence:
-      service: rest_command.proscenic_collect_dust
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_collect_dust
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_pause:
     alias: Proscenic Pause
+    icon: mdi:play-pause
     sequence:
-      service: rest_command.proscenic_pause
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_pause
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_on
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_continue:
     alias: Proscenic Continue
+    icon: mdi:play-pause
     sequence:
-      service: rest_command.proscenic_continue
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_continue
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_charge:
     alias: Proscenic Charge
+    icon: mdi:stop
     sequence:
-      service: rest_command.proscenic_charge
-      data:
-        username: !secret proscenic_username
-        token: !secret proscenic_token
-        serial: !secret proscenic_serial
+      - service: rest_command.proscenic_charge
+        data:
+          username: !secret proscenic_username
+          token: !secret proscenic_token
+          serial: !secret proscenic_serial
+      - service: input_boolean.turn_off
+        data: {}
+        target:
+          entity_id: input_boolean.proscenic_is_pause
 
   proscenic_powermode_standard:
     alias: Proscenic Powermode Standard
+    icon: mdi:fan-speed-2
     sequence:
       service: rest_command.proscenic_powermode_standard
       data:
@@ -64,6 +93,7 @@ script:
 
   proscenic_powermode_powerful:
     alias: Proscenic Powermode Powerful
+    icon: mdi:fan-speed-3
     sequence:
       service: rest_command.proscenic_powermode_powerful
       data:
@@ -73,6 +103,7 @@ script:
 
   proscenic_powermode_quiet:
     alias: Proscenic Powermode Quiet
+    icon: mdi:fan-speed-1
     sequence:
       service: rest_command.proscenic_powermode_quiet
       data:
